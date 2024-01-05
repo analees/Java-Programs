@@ -1,0 +1,288 @@
+package utils;
+
+import java.util.Set;
+
+public interface IntegerUtils_maharaj {
+//	   // Test the isEven method
+
+//    System.out.println(IntegerUtils_maharaj.isEven(4));    
+//    System.out.println(IntegerUtils_maharaj.isEven(1000000)); 
+//    System.out.println(IntegerUtils_maharaj.isEven(-7));  
+	
+	//is Even static method
+	//checks if the remainder is 0 when divided by 2 if yes it's even
+	public static boolean isEven(int k) {
+		return k%2==0;
+	}
+	
+	//isOdd static method
+	//checks if the remainder is not o when divided by 2 if yes it's odd
+	public static boolean isOdd(int k) {
+		return k%2!=0;
+	}
+    // Test the isPrime method
+
+//    System.out.println("Should return TRUE: " + IntegerUtils_maharaj.isPrime(3));   
+//    System.out.println(IntegerUtils_maharaj.isPrime(1000003)); 
+//    System.out.println(IntegerUtils_maharaj.isPrime(-7));  
+    
+	//isPrime static method
+	//returns false if a negative value is given and if no remainder is given when divided by a number from 2 to half the value of the int else returns true
+	public static boolean isPrime(int k) {
+		
+		if (k<=1) {
+			return false;
+		}
+		
+		for(int i=2;i<=k/2;i++) {
+			if(k%i ==0) {
+				return false;
+			}
+		}
+		return true;
+		}
+	
+//Test greatestCommonFactor static method
+//	System.out.println(IntegerUtils_maharaj.greatestCommonFactor(3,9));
+//    System.out.println(IntegerUtils_maharaj.greatestCommonFactor(2,122));
+//    System.out.println(IntegerUtils_maharaj.greatestCommonFactor(29,9));
+	
+	//greatestCommonFactor static method
+	//??????????????????????????
+		public static int greatestCommonFactor(int m, int n) {
+			 if (m < 0 || n < 0) {
+			        throw new IllegalArgumentException("Input values must be non-negative.");
+			    }
+			 if (m != (int)m || n != (int)n) {
+			        throw new IllegalArgumentException("Input values must be integers.");
+			    }
+		    //dividing n from m until n becomes 0 and return the value of m
+			while (n != 0) {
+		        int temp = n;
+		        n = m % n;
+		        m = temp;
+		    }
+		    return m;
+	    
+		}
+	
+		//Test the getGreatestConstraintMultiple method
+//        System.out.println(IntegerUtils_maharaj.getGreatestConstrainedMultiple(7,50));
+//        System.out.println(IntegerUtils_maharaj.getGreatestConstrainedMultiple(2,100));
+//        System.out.println(IntegerUtils_maharaj.getGreatestConstrainedMultiple(-2,-100));
+		
+		//the getGreatestConstraintMultiple method
+		//loops through each number and multiply with the int k until the maximum is met, if surpasses it returns the maxMultiple
+		
+	public static int getGreatestConstrainedMultiple(int k, int maximum) {
+		int maxMultiple = 0;
+		
+		for(int i=0;i<=maximum;i++) {
+			
+			int multiple = i*k;
+			
+			if(multiple <= maximum) {
+				
+				maxMultiple = multiple;
+				
+			}
+			
+			else{
+				break;
+			}
+				
+			
+		}
+		return maxMultiple;
+	}
+	
+	// Test the getIntegerH method
+//    System.out.println(IntegerUtils_maharaj.getIntegerH(0,0));
+//    System.out.println(IntegerUtils_maharaj.getIntegerH(15,0));
+//    System.out.println(IntegerUtils_maharaj.getIntegerH(-7,-3));
+	
+	
+	//integerH 
+	//run a for loop where i=1 and increment i until a value that satisfies each condition is met, return that value
+	public static int getIntegerH(int h_q_3, int h_r_5) {
+		int same_value=-1;
+		
+		for (int i=1; ;i++) {
+			if(i/3 == h_q_3 && i%5 == h_r_5) {
+				same_value = i;
+				break;
+			}
+			
+		}
+		
+		return same_value;
+		
+	}
+	
+	//Test getMaximum
+//	 Set<Integer> positiveSet = new HashSet<>(Set.of(5, 10, 2, 7));
+//	    System.out.println(IntegerUtils_maharaj.getMaximum(positiveSet));
+//	    
+//	    Set<Integer> hasNegativeValue = new HashSet<>(Set.of(1,17,-22,48,19));
+//	    System.out.println(IntegerUtils_maharaj.getMaximum(hasNegativeValue));
+//	    
+//	    Set<Integer> singleElement = new HashSet<>(Set.of(15));
+//	    System.out.println(IntegerUtils_maharaj.getMaximum(singleElement));
+//	    
+//	    Set<Integer>noElements = new HashSet<>(Set.of());
+//	    System.out.println(IntegerUtils_maharaj.getMaximum(noElements));
+	
+	//getMaximum 
+	//compares the value of the index before if it's greater that is the new max value 
+	public static int getMaximum(Set<Integer> integerSet) {
+		if (integerSet.size() == 0) {
+			return Integer.MAX_VALUE;
+	    }
+		Integer[] array = integerSet.toArray(new Integer[integerSet.size()]);
+		int max=array[0];
+		for(int i=0;i<integerSet.size();i++) {
+			if (array[i] > max) {
+				max = i;
+			}
+			
+		}
+		return max;
+	}
+	
+	//Test Minimum
+//	assert IntegerUtils_maharaj.getMinimum(new int[]{1,17,-22,48,19}) == -22;
+//    assert IntegerUtils_maharaj.getMinimum(new int[]{}) == Integer.MIN_VALUE ;
+//    assert IntegerUtils_maharaj.getMinimum(new int[]{2,4,6,8,10}) ==2;
+//    assert IntegerUtils_maharaj.getMinimum(new int[]{15}) == 15;
+	
+	//getMinimum
+	//compares the value of the index before if it's smaller that is the new min value 
+
+	public static int getMinimum(int[] intArray) {
+		if (intArray.length == 0) {
+			return Integer.MIN_VALUE;
+	    }
+
+
+	    // Initialize the minimum value with the first element of the array
+	    int min = intArray[0];
+
+	    // Iterate through the array starting from the second element
+	    for (int i = 1; i < intArray.length; i++) {
+	        if (intArray[i] < min) {
+	            // Update the minimum value if a smaller element is found
+	            min = intArray[i];
+	        }
+	    }
+
+	    // Return the minimum value
+	    return min;
+	}
+
+//Test isSorted
+//	 assert IntegerUtils_maharaj.isSorted( new int[]{2,2,2,2,2});
+//     assert !IntegerUtils_maharaj.isSorted( new int[]{2,3,4,5,7,6,});
+//     assert IntegerUtils_maharaj.isSorted( new int[]{1,17,-22,48,19});
+//     assert IntegerUtils_maharaj.isSorted(new int[] {}) ;
+//     assert !IntegerUtils_maharaj.isSorted(new int[]{1,17,-22,48,19});
+//     assert IntegerUtils_maharaj.isSorted(new int[] {15});	
+//     assert !IntegerUtils_maharaj.isSorted(new int[]{11,-17,-22,0,19});
+	
+	//isSorted 
+	//if the value at index i is greater than the index after it returns false
+     
+	public static boolean isSorted(int[] intArray) {
+		for (int i = 0; i < intArray.length-1; i++) {
+		    if (intArray[i] > intArray[i + 1]) {
+		        return false;
+		    }
+		}
+		return true;
+		
+	}
+	
+	//Test GetSmallestIndexfMatch
+//	assert IntegerUtils_maharaj.getSmallestIndexOfMatch(new int[]{1,2,3,4}, 4) == 3;
+//	assert IntegerUtils_maharaj.getSmallestIndexOfMatch(new int[] {2,4,6,8,10},22) == -1;
+//	assert IntegerUtils_maharaj.getSmallestIndexOfMatch(new int[]{2,4,6,8,10},-22) == -1;
+	
+	//getSmallestIndexofMatch
+	//compares the value at the current index to the target and it it's the same returns the index number 
+	public static int getSmallestIndexOfMatch(int[] intArray, int target) {
+		for (int i = 0; i < intArray.length; i++) {
+	        if (intArray[i] == target) {
+	            return i; // Found the target, return its index
+	        }
+	    }
+		//if target is not found return -1
+
+	    return -1; // Target not found in the array
+	}
+	
+//			Test for reverse
+//			assert IntegerUtils_maharaj.reverse(int k) == reverse k;
+//			assert IntegerUtils_maharaj.reverse(91) == 19;
+//			assert IntegerUtils_maharaj.reverse(0) == 0;
+//			assert IntegerUtils_maharaj.reverse(48) == 84;
+	
+	//reverse method
+	public static int reverse(int k) {
+		
+		int newReverseValue = 0;
+		
+		while (k!=0) {
+			//divide the integer by 10 to get the last digit as the remainder
+
+			int lastDigitofk = k%10;
+			//add that value to 0 then the mutliples of 10 that follow
+
+			newReverseValue = newReverseValue * 10 + lastDigitofk; 
+			//remove the last digit of the integer 
+
+			k/=10;
+		}
+		return newReverseValue;
+	
+	}
+	
+	//Test SumThing
+//    System.out.println(IntegerUtils_maharaj.sumthing(7));
+//    System.out.println(IntegerUtils_maharaj.sumthing(29));
+//    System.out.println(IntegerUtils_maharaj.sumthing(11));
+//    System.out.println(IntegerUtils_maharaj.sumthing(1234));
+//    System.out.println(IntegerUtils_maharaj.sumthing(Integer.MAX_VALUE));
+	
+	//sumthing method
+	//while loop, divide by 10 to get the last digit,  
+	public static int sumthing(long k) {
+		int sum=0;
+		 while(k!=0) {
+			 long lastDigit = k%10;
+			 //add this value to a variable initialized to 0,
+			 sum += lastDigit;
+			 //remove the last digit 
+			 k/=10;
+	// if sum >=10, initialize new variable
+			 if(sum >=10) {
+				 int newSum=0;
+	//		
+				 while(sum != 0) {
+					 int lastDigit2 = sum%10;
+					 //add this value to a variable initialized to 0,
+					 newSum += lastDigit2;
+					 //remove the last digit 
+					 sum /=10;
+				 }
+				 //sum initialized at the beginning is now set to newSum
+				 sum = newSum;
+			 }
+		 }
+		return sum;
+		
+	}
+	
+	
+	
+	
+	
+}
